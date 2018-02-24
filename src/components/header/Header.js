@@ -11,6 +11,8 @@ import {
     NavLink,
 } from 'reactstrap';
 
+import SearchForm from './SearchForm'
+
 // The Header creates links that can be used to navigate
 // between routes.
 const Header = () => (
@@ -94,25 +96,28 @@ class ReactStrapHeader extends Component {
                         <NavItem active={true}>
                             {/*<NavLink href="/components/">Components</NavLink>*/}
                             {/*<Link className="nav-link" to='roster'>Roster</Link>*/}
-                            <NavLink>
-                                <Link to='roster'>Roster</Link>
-                            </NavLink>
+                            <Link to='roster'>
+                                <NavLink>
+                                    Roster
+                                </NavLink>
+                            </Link>
                         </NavItem>
                         <NavItem>
-                            <NavLink><Link to='about'>About</Link></NavLink>
-                            {/*<NavLink href="/QueryPage/">QueryPage</NavLink>*/}
+                            <Link to='about'><NavLink>About</NavLink></Link>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
+                            {/*<NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>*/}
+                            <Link to='/schedule'>
+                                <NavLink>
+                                    Schedule
+                                </NavLink>
+                            </Link>
                         </NavItem>
                     </Nav>
                 </Collapse>
 
-                <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
-                    {/*</input>*/}
-                    <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <SearchForm/>
+
             </Navbar>
         )
     }

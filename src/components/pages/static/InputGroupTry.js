@@ -41,7 +41,7 @@ class Example extends Component {
                         </ButtonGroup>
                         <p>Selected: {this.state.rSelected}</p>
                     </Col>
-                    <Col>
+                    <Col >
 
                         <h5>Checkbox Buttons</h5>
                         <ButtonGroup>

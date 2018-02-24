@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 
 import Home from './static/Home'
 import Roster from './roster/Roster'
@@ -15,10 +15,10 @@ const Main = () => (
   <main>
     <Switch>
       <Route exact path='/' component={Home}/>
-      <Route name='/roster' component={Roster}/>
+      <Route path='/roster' component={Roster}/>
+      <Route path='/schedule' component={Schedule}/>
       {/*<Route link='/sched' component={Schedule}/>*/}
-      <Route name='sched' component={Schedule}/>
-      <Route name='about' component={About}/>
+      <Route name='/about' component={About}/>
     </Switch>
   </main>
 )
