@@ -2,6 +2,7 @@ import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 
 import Home from './static/Home'
+import Query from './lookup/Query'
 import Roster from './roster/Roster'
 import Schedule from './static/Schedule'
 import About from './static/About'
@@ -15,6 +16,7 @@ const Main = () => (
   <main>
     <Switch>
       <Route exact path='/' component={Home}/>
+      <Route path='/query' component={Query}/>
       <Route path='/roster' component={Roster}/>
       <Route path='/schedule' component={Schedule}/>
       {/*<Route link='/sched' component={Schedule}/>*/}
