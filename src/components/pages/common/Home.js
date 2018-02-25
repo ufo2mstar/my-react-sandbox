@@ -1,10 +1,9 @@
 import React from 'react'
-import {Container} from 'reactstrap'
 
-import Schedule from './Schedule'
+// import Schedule from '../static/Schedule'
 // import About from './About'
-import InpurGroupEg from './InputGroupTry'
-import Prog from './Progress'
+import InpurGroupEg from '../static/InputGroupTry'
+// import Prog from '../static/Progress'
 
 const Home = () => (
   <div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 
-import Home from './static/Home'
+import Home from './common/Home'
 import Query from './lookup/Query'
 import Roster from './roster/Roster'
 import Schedule from './static/Schedule'

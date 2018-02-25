@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Form, FormGroup, Input, InputGroup, InputGroupAddon, Label} from "reactstrap";
+import {Button, Form, FormGroup, Input, InputGroup, InputGroupAddon} from "reactstrap";
 import FontAwesome from 'react-fontawesome'
 
 const OldSearchForm = () => (
@@ -42,4 +42,6 @@ const newSearchForm = () => (
 )
 
 
+export {OldSearchForm}
+export {newSearchForm}
 export default SearchForm

@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import {Button, ButtonGroup, Row, Col} from 'reactstrap';
-import Fade from './Fader'
+import Fader from './Fader'
 
 class Example extends Component {
   constructor(props) {
     super(props);
 
     this.state = {cSelected: []};
-
     this.onCheckboxBtnClick = this.onCheckboxBtnClick.bind(this);
+
+    this.state.buttonList = [];
+    this.makeNewButton = this.makeNewButton.bind(this);
   }
 
   onCheckboxBtnClick(selected) {
@@ -19,6 +21,17 @@ class Example extends Component {
       this.state.cSelected.splice(index, 1);
     }
     this.setState({cSelected: [...this.state.cSelected]});
+  }
+
+  makeNewButton() {
+    this.state.buttonList.append()
+  }
+
+  buildButton(text, index) {
+    return (
+      `<Button color="primary" onClick={() => this.onCheckboxBtnClick(1)}
+              active={this.state.cSelected.includes(${index})}>${text}</Button>`
+    )
   }
 
   render() {
@@ -39,6 +52,13 @@ class Example extends Component {
 
           </Col>
         </Row>
+
+        {/*<Row>*/}
+        {/*<h5>Prog Try</h5>*/}
+        <Fader color="success" onClick={() => this.onCheckboxBtnClick(1)}
+               active={this.state.cSelected.includes(1)}/>
+        {/*</Row>*/}
+
       </div>
     );
   }
