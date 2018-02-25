@@ -6,10 +6,11 @@ class Example extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {cSelected: []};
+    this.tableList = ['Arrangements','']
+    this.state = {cSelected: [], checkBoxes: this.tableList};
     this.onCheckboxBtnClick = this.onCheckboxBtnClick.bind(this);
 
-    this.state.buttonList = [];
+    // this.state.buttonList = [];
     this.makeNewButton = this.makeNewButton.bind(this);
   }
 

@@ -18,6 +18,7 @@ const SearchForm = () => (
             {/*<Label for="exampleEmail" hidden>Email</Label>*/}
             <InputGroup>
                 <Input className={'bg-dark text-light'} id="exampleEmail" placeholder="any..."/>
+                {/*<Input className={''} id="exampleEmail" placeholder="any..."/>*/}
                 <InputGroupAddon addonType="append">
                     <Button color="primary">
                     <FontAwesome name='search'/>

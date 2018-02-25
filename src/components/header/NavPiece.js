@@ -19,6 +19,7 @@ const NavPiece = props => (
     {/*<NavItem active={props.location == props.to}>*/}
     {/* terrible hack! */}
     <NavItem active={document.location.toString().includes(props.to)}>
+    {/*<NavItem active={props.path.includes(props.to)}>*/}
     {/*<NavItem>*/}
       <NavLink tag={Link} to={props.to}>
         {props.text || "donno page"}
