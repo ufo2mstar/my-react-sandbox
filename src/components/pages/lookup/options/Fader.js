@@ -20,7 +20,7 @@ export default class Example extends React.Component {
       <div>
         <Button color={this.props.color} active={this.props.active} onClick={this.toggle}>Toggle Fade</Button>
         <Fade in={this.state.fadeIn} tag="h5" className="mt-3"> {/* can pass nested tags apparently.. cool! */}
-          This content will fade in and out as the button is pressed
+          {/*This content will fade in and out as the button is pressed*/}
           <ArrTable/>
         </Fade>
       </div>

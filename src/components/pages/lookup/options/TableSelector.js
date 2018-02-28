@@ -1,17 +1,29 @@
 import React, {Component} from 'react';
 import {Button, ButtonGroup, Row, Col} from 'reactstrap';
-import Fader from './Fader'
+
+import ArrTable from '../table/type/ArrTable'
 
 class Example extends Component {
   constructor(props) {
     super(props);
 
-    this.tableList = ['Arrangements','']
+    this.tableList = ['Arrs', 'Assets', 'Expos', 'Pledges'];
+    this.costomList = ['Select All', 'Clear All' , 'Custom'];
     this.state = {cSelected: [], checkBoxes: this.tableList};
     this.onCheckboxBtnClick = this.onCheckboxBtnClick.bind(this);
 
     // this.state.buttonList = [];
     this.makeNewButton = this.makeNewButton.bind(this);
+
+    // fader try
+    // this.state = {fadeIn: true};
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      fadeIn: !this.state.fadeIn
+    });
   }
 
   onCheckboxBtnClick(selected) {
@@ -25,17 +37,27 @@ class Example extends Component {
   }
 
   makeNewButton() {
-    this.state.buttonList.append()
+    this.state.checkBoxes.append()
   }
 
-  buildButton(text, index) {
-    return (
-      `<Button color="primary" onClick={() => this.onCheckboxBtnClick(1)}
-              active={this.state.cSelected.includes(${index})}>${text}</Button>`
+  buildButtonList() {
+    return this.state.checkBoxes.map((name, i) =>
+      <Button key={name} color="primary" onClick={() => this.onCheckboxBtnClick(i + 1)}
+              active={this.state.cSelected.includes(i + 1)}>{name}</Button>
     )
   }
 
-  render() {
+  buildTableList() {
+    return this.state.cSelected.map((i) =>
+      <div key={i}>
+        {/* can pass nested tags apparently.. cool! */}
+        {i}: {this.tableList[i-1]} Table goes here...
+        <ArrTable/>
+      </div>
+    )
+  }
+
+  oldRender() {
     return (
       <div>
         <Row>
@@ -56,9 +78,29 @@ class Example extends Component {
 
         {/*<Row>*/}
         {/*<h5>Prog Try</h5>*/}
-        <Fader color="success" onClick={() => this.onCheckboxBtnClick(1)}
-               active={this.state.cSelected.includes(1)}/>
+        {/*<Fader color="success" onClick={() => this.onCheckboxBtnClick(1)}*/}
+               {/*active={this.state.cSelected.includes(1)}/>*/}
         {/*</Row>*/}
+
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        <Row>
+          <Col>
+            <h5>Checkbox Buttons</h5>
+            <ButtonGroup>
+              {this.buildButtonList()}
+            </ButtonGroup>
+            <p>Selected: {JSON.stringify(this.state.cSelected)}</p>
+
+          </Col>
+        </Row>
+
+        {this.buildTableList()}
 
       </div>
     );
