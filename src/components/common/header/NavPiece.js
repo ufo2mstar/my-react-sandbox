@@ -16,11 +16,13 @@ import {
 
 const NavPiece = props => (
   <div>
+    {/*<NavItem>*/}
+    {/*<NavItem activeClassName={"active"}>*/}
     {/*<NavItem active={props.location == props.to}>*/}
     {/* terrible hack! */}
     <NavItem active={document.location.toString().includes(props.to)}>
-    {/*<NavItem active={props.path.includes(props.to)}>*/}
-    {/*<NavItem>*/}
+      {/*<NavItem active={props.path.includes(props.to)}>*/}
+      {/*<Link activeClassName={"active"}/>*/}
       <NavLink tag={Link} to={props.to}>
         {props.text || "donno page"}
       </NavLink>

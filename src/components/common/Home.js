@@ -2,7 +2,7 @@ import React from 'react'
 
 // import Schedule from '../static/Schedule'
 // import About from './About'
-import InpurGroupEg from '../static/InputGroupTry'
+import InpurGroupEg from '../pages/static/InputGroupTry'
 // import Prog from '../static/Progress'
 
 const Home = () => (

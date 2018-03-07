@@ -21,6 +21,7 @@ import App from './components/App';
 // import './themes/bootswatch/slate/_variables.scss'
 // import './themes/bootswatch/slate/_bootswatch.scss'
 
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 render((
   <BrowserRouter>
