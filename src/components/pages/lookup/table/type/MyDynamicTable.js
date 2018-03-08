@@ -8,6 +8,23 @@ import products from './data'
 
 const {Selectors} = Data;
 
+// Custom Formatter component
+class PercentCompleteFormatter extends React.Component {
+  // static propTypes = {
+  //   value: PropTypes.number.isRequired
+  // };
+
+  render() {
+    const percentComplete = this.props.value + '%';
+    return (
+      <div className="progress" style={{marginTop: '20px'}}>
+        <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={{width: percentComplete}}>
+          {percentComplete}
+        </div>
+      </div>);
+  }
+}
+
 class ProductList extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -17,7 +34,8 @@ class ProductList extends React.Component {
         key: key,
         name: key,
         sortable: true,
-        filterable: true
+        filterable: true,
+        formatter: key === 'price' ? PercentCompleteFormatter : ''
       }
     ));
   }
