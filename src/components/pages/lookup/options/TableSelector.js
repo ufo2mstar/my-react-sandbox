@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Button, ButtonGroup, Row, Col} from 'reactstrap';
 
 import TableHolder from '../table/TableHolder'
-import ArrTable from "../table/type/ArrTable";
 
 class Example extends Component {
   constructor(props) {

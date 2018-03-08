@@ -1,35 +1,35 @@
 import React from 'react'
-import BootstrapTable from 'react-bootstrap-table-next';
-// import ReactDataGrid from 'react-data-grid';
+// import BootstrapTable from 'react-bootstrap-table-next';
+import ReactDataGrid from 'react-data-grid';
 
 import products from './data'
 
-const ProductList = () => {
+class ProductList extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {productList: products};
+    this._columns = Object.keys(this.state.productList[0]).map((key, index) => (
+      {
+        key: key,
+        name: key,
+        sort: true
+      }
+    ));
+  }
 
-  const productList = products;
+  rowGetter = (i) => {
+    return this.state.productList[i];
+  };
 
-  const columns = Object.keys(productList[0]).map((key, index) => (
-    {
-      dataField: key,
-      text: key,
-      sort: true
-    }
-  ));
+  render() {
+    return (
+      <ReactDataGrid
+        columns={this._columns}
+        rowGetter={this.rowGetter}
+        rowsCount={this.state.productList.length}
+        minHeight={500}/>);
+  }
+}
 
-  const defaultSorted = [{
-    dataField: 'price',
-    order: 'desc'
-  }];
-
-  return (
-    <BootstrapTable
-      keyField="id"
-      data={productList}
-      columns={columns}
-      defaultSorted={defaultSorted}
-
-    />
-  );
-};
 
 export default ProductList;

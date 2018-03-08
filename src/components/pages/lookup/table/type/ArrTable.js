@@ -1,5 +1,5 @@
 import React from 'react'
-import Progress from '../../../static/Progress'
+// import Progress from '../../../static/Progress'
 import ProductList from './MyTable'
 import ArrDatagrid from "./MyDynamicTable";
 
