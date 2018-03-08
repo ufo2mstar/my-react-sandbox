@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Button, ButtonGroup, Row, Col} from 'reactstrap';
 
-import ArrTable from '../table/type/ArrTable'
+import TableHolder from '../table/TableHolder'
+import ArrTable from "../table/type/ArrTable";
 
 class Example extends Component {
   constructor(props) {
@@ -9,11 +10,12 @@ class Example extends Component {
 
     this.tableList = ['Arrs', 'Assets', 'Expos', 'Pledges'];
     this.costomList = ['Select All', 'Clear All' , 'Custom'];
-    this.state = {cSelected: [], checkBoxes: this.tableList};
+    this.state = {cSelected: [1,2,3,4], checkBoxes: this.tableList, activeTables: this.getActiveTableList};
     this.onCheckboxBtnClick = this.onCheckboxBtnClick.bind(this);
 
     // this.state.buttonList = [];
     this.makeNewButton = this.makeNewButton.bind(this);
+    this.getActiveTableList = this.getActiveTableList.bind(this);
 
     // fader try
     // this.state = {fadeIn: true};
@@ -24,6 +26,12 @@ class Example extends Component {
     this.setState({
       fadeIn: !this.state.fadeIn
     });
+  }
+
+  getActiveTableList(){
+    return this.state.cSelected.map((i) =>
+      this.state.checkBoxes[i - 1]
+    )
   }
 
   onCheckboxBtnClick(selected) {
@@ -47,15 +55,15 @@ class Example extends Component {
     )
   }
 
-  buildTableList() {
-    return this.state.cSelected.map((i) =>
-      <div key={i}>
-        {/* can pass nested tags apparently.. cool! */}
-        {i}: {this.tableList[i-1]} Table goes here...
-        <ArrTable/>
-      </div>
-    )
-  }
+  // buildTableList() {
+  //   return this.state.cSelected.map((i) =>
+  //     <div key={i}>
+  //       {/* can pass nested tags apparently.. cool! */}
+  //       {i}: {this.tableList[i-1]} Table goes here...
+  //       <ArrTable/>
+  //     </div>
+  //   )
+  // }
 
   oldRender() {
     return (
@@ -91,17 +99,17 @@ class Example extends Component {
       <div>
         <Row>
           <Col>
-            <h5>Checkbox Buttons</h5>
+            {/*<h5>Checkbox Buttons</h5>*/}
             <ButtonGroup>
               {this.buildButtonList()}
             </ButtonGroup>
             <p>Selected: {JSON.stringify(this.state.cSelected)}</p>
-
           </Col>
         </Row>
-
-        {this.buildTableList()}
-
+        {/*{this.buildTableList()}*/}
+        {/*<TableContainer types={this.state.activeTables} />*/}
+        <TableHolder />
+        {/*<ArrTable/>*/}
       </div>
     );
   }

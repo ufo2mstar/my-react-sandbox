@@ -8,12 +8,13 @@ import App from './components/App';
 // import './bootswatch_cyborg.css'
 // import './themes/bootswatch/slate/bootstrap.css'
 
-// import './themes/bootswatch/cyborg/bootstrap.css'
+import './themes/bootswatch/cyborg/bootstrap.css'
 // import './themes/bootswatch/cyborg/_variables.scss'
 
 // import './themes/bootswatch/cyborg/_bootswatch.scss'
 
 // const theme = "slate";
+// const theme = "cyborg";
 // import `./themes/bootswatch/${theme}/bootstrap.css`
 // import `./themes/bootswatch/${theme}/_variables.scss`
 

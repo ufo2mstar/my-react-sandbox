@@ -6,8 +6,8 @@ export default class ArrTable extends React.Component {
   render() {
     return (
       <div>
-        <Progress animated={true}/>
         <ProductList/>
+        {/*<Progress animated={false}/>*/}
       </div>
     )
   }

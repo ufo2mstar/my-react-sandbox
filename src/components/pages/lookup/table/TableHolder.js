@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios'
-import Consts from '../../Consts'
+import Consts from '../../../Consts'
+import ArrTable from "./type/ArrTable";
 
-const Card = (props) => {
+const Table = (props) => {
   return (
     <div style={{margin: '1em'}}>
       <img width="75" src={props.avatar_url} alt={props.avatar_url}/>
@@ -16,10 +17,10 @@ const Card = (props) => {
   );
 };
 
-const CardList = (props) => {
+const TableList = (props) => {
   return (
     <div>
-      {props.cards.map(card => <Card key={card.id} {...card} />)}
+      {props.tables.map(table => <Table key={table.id} {...table} />)}
     </div>
   );
 };
@@ -41,31 +42,46 @@ class Form extends React.Component {
                value={this.state.userName}
                onChange={(event) => this.setState({ userName: event.target.value })}
                placeholder="Github username" required />
-        <button type="submit">Add card</button>
+        <button type="submit">Add table</button>
       </form>
     );
   }
 }
 
-class Schedule extends React.Component {
+class TableHolder extends React.Component {
   state = {
-    cards: []
+    tables: []
   };
 
-  addNewCard = (cardInfo) => {
+  addNewTable = (tableInfo) => {
     this.setState(prevState => ({
-      cards: prevState.cards.concat(cardInfo)
+      tables: prevState.tables.concat(tableInfo)
     }));
   };
+
+  buildTableList() {
+    return this.props.types.map((i) =>
+      <div key={i}>
+        {/* can pass nested tags apparently.. cool! */}
+        {i}: {this.tableList[i-1]} Table goes here...
+        <TableList type={this.tableList[i-1]} />
+        <Form/>
+        <ArrTable/>
+      </div>
+    )
+  }
 
   render() {
     return (
       <div>
-        <Form onSubmit={this.addNewCard} />
-        <CardList cards={this.state.cards} />
+        {/*<Form onSubmit={this.addNewTable} />*/}
+        {/*<TableList tables={this.state.tables} />*/}
+        {/*{this.buildTableList()}*/}
+        <ArrTable/>
       </div>
     );
   }
 }
 
-export default Schedule
+export default TableHolder
+
