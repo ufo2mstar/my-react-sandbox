@@ -55,4 +55,17 @@ const products = [
   {"id": 12, "productName": "DOXYCYCLINE", "price": 4, "manufacturedDate": "2016-05-22", "expiryDate": "2016-01-06"},
 ];
 
+// const emp = [{}];
+// const columns =
+//   // products.map((row) =>
+// // )
+//   Object.keys(emp[0]).map((key, index) => (
+//     // products[0][key] *= 2;
+//     // console.log(key, index + 1)
+//     {index: (key + " @ " + index + 1)}
+// ))
+// ;
+//
+// console.log(columns)
+
 export default products
