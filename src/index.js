@@ -24,6 +24,16 @@ import './themes/bootswatch/cyborg/bootstrap.css'
 
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
+// bootswatch
+//scss
+// @import "~bootswatch/dist/[theme]/variables";
+// @import "~bootstrap/scss/bootstrap";
+// @import "~bootswatch/dist/[theme]/bootswatch";
+
+// import "bootswatch/dist/united/bootstrap.min.css";
+// import "bootswatch/dist/united/_bootswatch.scss";
+// import "bootswatch/dist/united/_variables.scss";
+
 render((
   <BrowserRouter>
     <App />

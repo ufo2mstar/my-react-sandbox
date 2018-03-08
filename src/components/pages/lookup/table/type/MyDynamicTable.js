@@ -5,6 +5,7 @@ import ReactDataGrid from 'react-data-grid';
 import {Toolbar, Data} from 'react-data-grid-addons'
 // import {Selectors} from 'react-data-grid-addons'
 import products from './data'
+// const products = [{}];
 
 const {Selectors} = Data;
 
@@ -18,7 +19,8 @@ class PercentCompleteFormatter extends React.Component {
     const percentComplete = this.props.value + '%';
     return (
       <div className="progress" style={{marginTop: '20px'}}>
-        <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={{width: percentComplete}}>
+        <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+             style={{width: percentComplete}}>
           {percentComplete}
         </div>
       </div>);
@@ -100,9 +102,13 @@ class ProductList extends React.Component {
         onAddFilter={this.handleFilterChange}
         onClearFilters={this.onClearFilters}
         enableCellSelect={true}
+        //empty
+        emptyRowsView={EmptyRowsView}
       />);
   }
 }
+
+const EmptyRowsView = () => (<div>Nothing to show</div>)
 
 
 export default ProductList;
