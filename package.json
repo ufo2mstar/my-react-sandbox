@@ -5,6 +5,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bootswatch": "^4.0.0",
+    "jqwidgets-framework": "^5.6.0",
+    "prop-types": "^15.6.1",
     "react": "15.5.3",
     "react-bootstrap-table-next": "^0.1.4",
     "react-data-grid": "^3.0.11",

@@ -1,7 +1,7 @@
 import React from 'react'
 import {
-  Link,
-  // NavLink,
+  // Link,
+  NavLink as RouterLink,
 } from 'react-router-dom'
 
 import {
@@ -16,14 +16,15 @@ import {
 
 const NavPiece = props => (
   <div>
-    {/*<NavItem>*/}
+    <NavItem>
     {/*<NavItem activeClassName={"active"}>*/}
     {/*<NavItem active={props.location == props.to}>*/}
     {/* terrible hack! */}
-    <NavItem active={document.location.toString().includes(props.to)}>
+    {/*<NavItem active={document.location.toString().includes(props.to)}>*/}
       {/*<NavItem active={props.path.includes(props.to)}>*/}
       {/*<Link activeClassName={"active"}/>*/}
-      <NavLink tag={Link} to={props.to}>
+      {/*<NavLink tag={Link} to={props.to}>*/}
+      <NavLink tag={RouterLink} to={props.to} activeClassName="active">
         {props.text || "donno page"}
       </NavLink>
     </NavItem>
