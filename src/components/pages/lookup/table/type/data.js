@@ -52,7 +52,7 @@ const products = [
     "manufacturedDate": "2016-07-25",
     "expiryDate": "2016-09-03"
   },
-  {"id": 12, "productName": "DOXYCYCLINE", "price": 4, "manufacturedDate": "2016-05-22", "expiryDate": "2016-01-06"},
+  {"id": 12, "productName": "DOXYCYCLINE", "price": 0, "manufacturedDate": "2016-05-22", "expiryDate": "2016-01-06"},
 ];
 
 // const emp = [{}];

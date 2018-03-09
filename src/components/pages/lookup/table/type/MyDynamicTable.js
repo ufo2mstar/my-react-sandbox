@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 // import BootstrapTable from 'react-bootstrap-table-next';
 import ReactDataGrid from 'react-data-grid';
 // import ReactDataGridPlugins from 'react-data-grid-addons'
@@ -7,18 +8,18 @@ import {Toolbar, Data} from 'react-data-grid-addons'
 import products from './data'
 // const products = [{}];
 
-const {Selectors} = Data;
+const {Selectors} = Data; // Nice!
 
 // Custom Formatter component
 class PercentCompleteFormatter extends React.Component {
-  // static propTypes = {
-  //   value: PropTypes.number.isRequired
-  // };
+  static propTypes = {
+    value: PropTypes.number.isRequired
+  };
 
   render() {
     const percentComplete = this.props.value + '%';
     return (
-      <div className="progress" style={{marginTop: '20px'}}>
+      <div className="progress" style={{marginTop: ''}}>
         <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
              style={{width: percentComplete}}>
           {percentComplete}
@@ -30,13 +31,16 @@ class PercentCompleteFormatter extends React.Component {
 class ProductList extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {rows: products, originalRows: products, filters: {}};
+    // debugger;
+    console.log(props.data);
+    this.state = {rows: props.data ? props.data : products, originalRows: products, filters: {}};
     this._columns = Object.keys(this.state.rows[0]).map((key, index) => (
       {
         key: key,
         name: key,
         sortable: true,
         filterable: true,
+        resizable: true,
         formatter: key === 'price' ? PercentCompleteFormatter : ''
       }
     ));
@@ -108,7 +112,7 @@ class ProductList extends React.Component {
   }
 }
 
-const EmptyRowsView = () => (<div>Nothing to show</div>)
+const EmptyRowsView = () => (<div>No Data!?</div>);
 
 
 export default ProductList;

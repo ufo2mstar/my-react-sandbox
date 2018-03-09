@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Consts from '../../Consts'
+import ArrTable from "../lookup/table/type/ArrTable";
 
 const Card = (props) => {
   return (
@@ -16,24 +17,41 @@ const Card = (props) => {
   );
 };
 
+const Table = (props) => {
+  return (
+    <div>
+      <ArrTable {...props} />
+    </div>
+  )
+}
+
 const CardList = (props) => {
   return (
     <div>
       {props.cards.map(card => <Card key={card.id} {...card} />)}
+      {props.cards.map(card => <Table key={card.id} data={[card.owner]} />)}
     </div>
   );
 };
 
 class Form extends React.Component {
-  state = { userName: '' }
+  state = { userName: '' };
+
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.get(`${Consts.api_url}${this.state.userName}`)
+    let api_url = `${Consts.api_url}`
+    // console.log(api_url);
+    axios.get(api_url)
       .then(resp => {
-        this.props.onSubmit(resp.data);
-        this.setState({ userName: '' });
+        this.props.onSubmit(resp.data[this.state.userName]);
+        this.setState({ userName: 'kod' });
+      })
+      .catch(function (error) {
+        console.log(error);
       });
+
   };
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -54,7 +72,7 @@ class Schedule extends React.Component {
 
   addNewCard = (cardInfo) => {
     this.setState(prevState => ({
-      cards: prevState.cards.concat(cardInfo)
+      cards: prevState.cards.concat(cardInfo),
     }));
   };
 
