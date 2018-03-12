@@ -28,23 +28,25 @@ const Table = (props) => {
 const CardList = (props) => {
   return (
     <div>
-      {props.cards.map(card => <Card key={card.id} {...card} />)}
-      {props.cards.map(card => <Table key={card.id} data={[card.owner]} />)}
+      {/*{props.cards.map(card => <Card key={card.id} {...card} />)}*/}
+      {props.cards.map(card => <Table key={card.id} data={[card]}/>)}
     </div>
   );
 };
 
 class Form extends React.Component {
-  state = { userName: '' };
+  state = {userName: ''};
 
   handleSubmit = (event) => {
     event.preventDefault();
     let api_url = `${Consts.api_url}`
     // console.log(api_url);
-    axios.get(api_url)
+    axios.get(api_url, {headers: {'Access-Control-Allow-Origin': '*',}})
       .then(resp => {
-        this.props.onSubmit(resp.data[this.state.userName]);
-        this.setState({ userName: 'kod' });
+        console.log(resp);
+        // this.props.onSubmit(resp.data[this.state.userName]);
+        this.props.onSubmit(resp.data);
+        this.setState({userName: 'kod'});
       })
       .catch(function (error) {
         console.log(error);
@@ -57,8 +59,8 @@ class Form extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <input type="text"
                value={this.state.userName}
-               onChange={(event) => this.setState({ userName: event.target.value })}
-               placeholder="Github username" required />
+               onChange={(event) => this.setState({userName: event.target.value})}
+               placeholder="Github username" required/>
         <button type="submit">Add card</button>
       </form>
     );
@@ -70,17 +72,18 @@ class Schedule extends React.Component {
     cards: []
   };
 
-  addNewCard = (cardInfo) => {
-    this.setState(prevState => ({
-      cards: prevState.cards.concat(cardInfo),
-    }));
+  addNewCard = (cardInfos) => {
+    cardInfos.map((cardInfo) => this.setState(prevState => ({
+        cards: prevState.cards.concat(cardInfo),
+      }))
+    )
   };
 
   render() {
     return (
       <div>
-        <Form onSubmit={this.addNewCard} />
-        <CardList cards={this.state.cards} />
+        <Form onSubmit={this.addNewCard}/>
+        <CardList cards={this.state.cards}/>
       </div>
     );
   }
