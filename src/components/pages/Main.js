@@ -6,6 +6,7 @@ import Query from './lookup/Query'
 import Roster from './roster/Roster'
 import Schedule from './static/Schedule'
 import About from './static/About'
+import PageNotFound from "./static/PageNotFound";
 // import Gitapp from './githubapp/Gitapp'
 
 // The Main component renders one of the three provided
@@ -21,8 +22,9 @@ const Main = () => (
       <Route path='/roster' component={Roster}/>
       <Route path='/schedule' component={Schedule}/>
       {/*<Route link='/sched' component={Schedule}/>*/}
-      <Route name='/about' component={About}/>
+      <Route path='/about' component={About}/>
       {/*<Route path='gitapp' component={Gitapp}/>*/}
+      <Route component={PageNotFound}/>
     </Switch>
   </main>
 )
