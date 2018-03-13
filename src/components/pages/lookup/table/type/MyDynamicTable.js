@@ -5,8 +5,13 @@ import ReactDataGrid from 'react-data-grid';
 // import ReactDataGridPlugins from 'react-data-grid-addons'
 import {Toolbar, Data} from 'react-data-grid-addons'
 // import {Selectors} from 'react-data-grid-addons'
-import products from './data'
+// import products from './data'
 // const products = [{}];
+import PersonAPI from '../../../../services/dataService'
+let api = new PersonAPI();
+// const products = api.getAuthors();
+// const products = api.getWeather();
+let products = api.getDataPromise();
 
 const {Selectors} = Data; // Nice!
 
@@ -32,7 +37,16 @@ class ProductList extends React.Component {
   constructor(props, context) {
     super(props, context);
     // debugger;
-    console.log(props.data);
+    console.log("arr: ");
+    console.log(props);
+    products = products.then(resp => {
+      console.log('data:');
+      console.log(resp);
+      return resp.data;
+    });
+    console.log('products: ');
+    console.log(products);
+
     this.state = {rows: props.data ? props.data : products, originalRows: products, filters: {}};
     this._columns = Object.keys(this.state.rows[0]).map((key, index) => (
       {

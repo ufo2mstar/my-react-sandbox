@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import Consts from '../../Consts'
+import Consts from '../../consts'
 import ArrTable from "../lookup/table/type/ArrTable";
 
 const Card = (props) => {
@@ -28,7 +28,7 @@ const Table = (props) => {
 const CardList = (props) => {
   return (
     <div>
-      {/*{props.cards.map(card => <Card key={card.id} {...card} />)}*/}
+      {props.cards.map(card => <Card key={card.id} {...card} />)}
       {props.cards.map(card => <Table key={card.id} data={[card]}/>)}
     </div>
   );

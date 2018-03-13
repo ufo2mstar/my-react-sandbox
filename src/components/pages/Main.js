@@ -19,11 +19,16 @@ const Main = () => (
     <Switch>
       <Route exact path='/' component={Home}/>
       <Route path='/query' component={Query}/>
+      {/*<Route path={'/query/:id'} component={Query}/>*/}
+
+      {/*// test*/}
       <Route path='/roster' component={Roster}/>
       <Route path='/schedule' component={Schedule}/>
       {/*<Route link='/sched' component={Schedule}/>*/}
       <Route path='/about' component={About}/>
       {/*<Route path='gitapp' component={Gitapp}/>*/}
+
+      {/*// 404*/}
       <Route component={PageNotFound}/>
     </Switch>
   </main>

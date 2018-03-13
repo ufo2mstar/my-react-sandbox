@@ -7,6 +7,8 @@ class Example extends Component {
   constructor(props) {
     super(props);
 
+    // console.log(props);
+
     this.tableList = ['Arrs', 'Assets', 'Expos', 'Pledges'];
     this.costomList = ['Select All', 'Clear All' , 'Custom'];
     this.state = {cSelected: [1,2,3,4], checkBoxes: this.tableList, activeTables: this.getActiveTableList};
@@ -107,7 +109,7 @@ class Example extends Component {
         </Row>
         {/*{this.buildTableList()}*/}
         {/*<TableContainer types={this.state.activeTables} />*/}
-        <TableHolder />
+        <TableHolder {...this.props}/>
         {/*<ArrTable/>*/}
       </div>
     );

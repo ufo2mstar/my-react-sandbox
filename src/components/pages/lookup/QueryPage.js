@@ -1,11 +1,12 @@
 import React from 'react'
 import TableSelector from './options/TableSelector'
+import withRouter from "react-router-dom/es/withRouter";
 
-const QueryPage = () => (
+const QueryPage = (props) => (
   <div>
-    <TableSelector/>
+    <TableSelector {...props}/>
   </div>
 )
 
 
-export default QueryPage
+export default withRouter(QueryPage)
