@@ -2,10 +2,10 @@ import React from 'react'
 import TableSelector from './options/TableSelector'
 import withRouter from "react-router-dom/es/withRouter";
 
-const QueryPage = (props) => (
+const QueryPage = ({match}) => (
   <div>
-    <TableSelector {...props}/>
-    {/*<p>{props.location}</p>*/}
+    {/*<p>{match}</p>*/}
+    <TableSelector item={match.params.id}/>
   </div>
 );
 

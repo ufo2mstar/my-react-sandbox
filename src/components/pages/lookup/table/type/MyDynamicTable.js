@@ -9,7 +9,8 @@ import {Toolbar, Data} from 'react-data-grid-addons'
 // const products = [{}];
 import PersonAPI from '../../../../services/dataService'
 let api = new PersonAPI();
-const products = api.getAuthors();
+const products = [{}];
+// const products = api.getAuthors();
 // const products = api.getWeather();
 // let products = api.getDataPromise();
 
@@ -50,7 +51,7 @@ class ProductList extends React.Component {
     // console.log('products: ');
     // console.log(products);
 
-    this.state = {rows: props.data ? props.data : products, originalRows: products, filters: {}};
+    this.state = {rows: products, originalRows: products, filters: {}};
     this._columns = Object.keys(this.state.rows[0]).map((key, index) => (
       {
         key: key,

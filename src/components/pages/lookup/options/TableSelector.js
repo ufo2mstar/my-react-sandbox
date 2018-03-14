@@ -7,7 +7,8 @@ class Example extends Component {
   constructor(props) {
     super(props);
 
-    // console.log(props);
+    console.log("table selector:");
+    console.log(props);
 
     this.tableList = ['Arrs', 'Assets', 'Expos', 'Pledges'];
     this.costomList = ['Select All', 'Clear All' , 'Custom'];

@@ -7,7 +7,7 @@ export default class ArrTable extends React.Component {
   render() {
     return (
       <div>
-        <ArrDatagrid {...this.props}/>
+        <ArrDatagrid data={this.props.data}/>
         {/*<ProductList/>*/}
         {/*<Progress animated={false}/>*/}
       </div>
