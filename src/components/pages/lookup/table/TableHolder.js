@@ -1,104 +1,47 @@
 import React from 'react'
-import axios from 'axios'
-import Consts from '../../../consts'
-import ArrTable from "./type/ArrTable";
-
-// const Table = (props) => {
-//   return (
-//     <div style={{margin: '1em'}}>
-//       <img width="75" src={props.avatar_url} alt={props.avatar_url}/>
-//       <div style={{display: 'inline-block', marginLeft: 10}}>
-//         <div style={{fontSize: '1.25em', fontWeight: 'bold'}}>
-//           {props.name}
-//         </div>
-//         <div>{props.company}</div>
-//       </div>
-//     </div>
-//   );
-// };
-//
-// const TableList = (props) => {
-//   return (
-//     <div>
-//       {props.tables.map(table => <Table key={table.id} {...table} />)}
-//     </div>
-//   );
-// };
-//
-// class Form extends React.Component {
-//   state = {userName: ''}
-//   handleSubmit = (event) => {
-//     event.preventDefault();
-//     axios.get(`${Consts.api_url}${this.state.userName}`)
-//       .then(resp => {
-//         this.props.onSubmit(resp.data);
-//         this.setState({userName: ''});
-//       });
-//   };
-//
-//   render() {
-//     return (
-//       <form onSubmit={this.handleSubmit}>
-//         <input type="text"
-//                value={this.state.userName}
-//                onChange={(event) => this.setState({userName: event.target.value})}
-//                placeholder="Github username" required/>
-//         <button type="submit">Add table</button>
-//       </form>
-//     );
-//   }
-// }
 
 class TableHolder extends React.Component {
   constructor(props){
-    super(props)
+    super(props);
     console.log("table holder props:");
     console.log(props);
+
+    this.state = props
   }
 
-  state = {
-    tables: []
+  // state = {
+  //   tables: this.props.tables,
+  //   lookup: this.props.lookup,
+  // };
+
+  // addNewTable = (tableInfo) => {
+  //   this.setState(prevState => ({
+  //     tables: prevState.tables.concat(tableInfo)
+  //   }));
+  // };
+
+  buildTableList(tableData) {
+    Object.keys(tableData).map(table => console.log(`key: table name = ${table}  data= ${tableData[table]}`));
+    // return this.state.cSelected.map((i) =>
+    //   <div key={i}>
+    //     {/* can pass nested tags apparently.. cool! */}
+    //     {i}: {this.tableList[i-1]} Table goes here...
+    //     <ArrTable/>
+    //   </div>
+    // )
+  }
+
+  showState = () => {
+    // console.log(this.state);
+    return JSON.stringify(this.state)
   };
-
-  addNewTable = (tableInfo) => {
-    this.setState(prevState => ({
-      tables: prevState.tables.concat(tableInfo)
-    }));
-  };
-
-  getTableData = () => {
-    // let uri = `${consts.api_url}/${this.props.match.params.id}`;
-    let uri = `${Consts.api_url}`;
-    console.log(`api call: ${uri}`);
-
-    axios.get(uri)
-      .then(resp => {
-        console.log(resp.data);
-        this.addNewTable(resp.data)
-        // this.props.data = resp.data;
-        // return resp.data;
-      });
-  };
-
-  // buildTableList() {
-  //   return this.props.types.map((i) =>
-  //     <div key={i}>
-  //       {/* can pass nested tags apparently.. cool! */}
-  //       {i}: {this.tableList[i - 1]} Table goes here...
-  //       <TableList type={this.tableList[i - 1]}/>
-  //       <Form/>
-  //       <ArrTable/>
-  //     </div>
-  //   )
-  // }
 
   render() {
     return (
       <div>
-        {/*<Form onSubmit={this.addNewTable} />*/}
-        {/*<TableList tables={this.state.tables} />*/}
         {/*{this.buildTableList()}*/}
-        <ArrTable data={this.state.tables} />
+        <p>{this.showState()}</p>
+        {/*<p>{this.buildTableList(this.state.tables)}</p>*/}
       </div>
     );
   }

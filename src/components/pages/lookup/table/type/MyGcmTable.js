@@ -5,12 +5,13 @@ import ReactDataGrid from 'react-data-grid';
 // import ReactDataGridPlugins from 'react-data-grid-addons'
 import {Toolbar, Data} from 'react-data-grid-addons'
 // import {Selectors} from 'react-data-grid-addons'
+
 // import products from './data'
 // const products = [{}];
 import PersonAPI from '../../../../services/dataService'
 let api = new PersonAPI();
-const products = [{}];
-// const products = api.getAuthors();
+// const products = [{}];
+const products = api.getAuthors();
 // const products = api.getWeather();
 // let products = api.getDataPromise();
 
@@ -34,7 +35,7 @@ class PercentCompleteFormatter extends React.Component {
   }
 }
 
-class ProductList extends React.Component {
+class MyGcmTable extends React.Component {
   constructor(props, context) {
     super(props, context);
     // debugger;
@@ -63,10 +64,6 @@ class ProductList extends React.Component {
       }
     ));
   }
-
-  // rowGetter = (i) => {
-  //   return this.state.rows[i];
-  // };
 
   handleGridSort = (sortColumn, sortDirection) => {
     const comparer = (a, b) => {
@@ -136,4 +133,4 @@ class ProductList extends React.Component {
 const EmptyRowsView = () => (<div>No Data!?</div>);
 
 
-export default ProductList;
+export default MyGcmTable;
