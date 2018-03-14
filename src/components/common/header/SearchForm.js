@@ -3,7 +3,7 @@ import {Button, Form, FormGroup, Input, InputGroup, InputGroupAddon, Label} from
 import FontAwesome from 'react-fontawesome'
 
 // import querystring from 'query-string';
-import Redirect from "react-router-dom/es/Redirect";
+// import Redirect from "react-router-dom/es/Redirect";
 import withRouter from "react-router-dom/es/withRouter";
 
 const OldSearchForm = () => (
@@ -106,8 +106,9 @@ class SearchForm extends React.Component {
     event.preventDefault();
     alert('A name was submitted: ' + this.state.value);
     let target = `/query/${this.state.value}`;
-    console.log(target);
+    console.log(`going to: ${target}`);
     this.setState({searched: true, target: this.state.value,});
+    this.props.history.push(target);
     // return;
   };
 
@@ -117,9 +118,10 @@ class SearchForm extends React.Component {
     // let btnClass = 'warning';
     // inpClass = '' // for default search look
 
-    const {from} = this.props.location.state || '/';
-    console.log(from + '' + this.state.target);
-    const {fireRedirect} = this.state.searched;
+    // const {from} = this.props.location.state || '/';
+    // console.log('kod:');
+    // console.log(from + ': ' + this.state.target);
+    // const {fireRedirect} = this.state.searched;
 
     return (
       <div>
@@ -140,9 +142,9 @@ class SearchForm extends React.Component {
           {' '}
         </Form>
         {/*<Redirect to={target}/>*/}
-        {fireRedirect && (
-          <Redirect to={from || this.state.target}/>
-        )}
+        {/*{fireRedirect && (*/}
+          {/*<Redirect to={from || this.state.target}/>*/}
+        {/*)}*/}
       </div>
     );
   }

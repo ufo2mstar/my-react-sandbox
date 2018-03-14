@@ -63,7 +63,8 @@ class TableHolder extends React.Component {
   sendData = () => {
     // let uri = `${consts.api_url}/${this.props.match.params.id}`;
     let uri = `${Consts.api_url}`;
-    console.log(uri);
+    console.log(`api call: ${uri}`);
+
     axios.get(uri)
       .then(resp => {
         console.log(resp.data);

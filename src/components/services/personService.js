@@ -18,6 +18,7 @@ class API {
       // console.log(api_url);
       axios.get(api_url, {headers: {'Access-Control-Allow-Origin': '*',}})
         .then(resp => {
+          console.log("resp");
           console.log(resp);
           // this.props.onSubmit(resp.data[this.state.userName]);
           this.props.onSubmit(resp.data);

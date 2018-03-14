@@ -38,7 +38,7 @@ const PageNotFound = (props) => {
   if (props.location)
     message += props.text;
 
-  console.log(message);
+  console.log(`404 msg: ${message}`);
   return (
     <div style={{textAlign: 'center'}}>
       {/*<h1>{message}</h1>*/}
