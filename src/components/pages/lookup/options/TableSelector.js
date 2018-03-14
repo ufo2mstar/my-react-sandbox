@@ -10,7 +10,7 @@ class TableSelector extends Component {
 
 
     // this.costomList = ['Select All', 'Clear All', 'Custom'];
-    this.state = {cSelected: [1, 2, 3, 4], checkBoxes: props.tableList, activeTables: this.getActiveTableList};
+    this.state = {cSelected: Array(props.tableList.length).fill().map((e,i)=>i+1), checkBoxes: props.tableList, activeTables: this.getActiveTableList};
     this.onCheckboxBtnClick = this.onCheckboxBtnClick.bind(this);
 
     // this.state.buttonList = [];

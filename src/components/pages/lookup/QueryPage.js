@@ -14,7 +14,7 @@ class QueryPage extends React.Component {
     // console.log(this.props);
 
     // this.getTableData()
-    this.tableList = ['Arrs', 'Assets', 'Expos', 'Pledges'];
+    this.tableList = ['Arrs', 'Assets', 'Expos', 'Pledges','Steps'];
     this.tables = this.toObj(this.tableList);
 
     this.state = {
@@ -34,16 +34,22 @@ class QueryPage extends React.Component {
   // };
 
   addTableData = (tableName, tableQuery) => {
+    console.log(this.state);
     console.log(tableName, tableQuery);
+    this.tables[tableName] = tableQuery;
     this.setState(prevState => ({
-      tables: prevState.tables[tableName] = tableQuery,
-    }))
+      // tables: prevState.tables[tableName] = tableQuery,
+      // tables: this.tables[tableName] = tableQuery,
+      // tables: prevState.tables[tableName], // table disappears
+      tables: prevState.tables, // table disappears
+      // prevState.tables[tableName]= tableQuery,
+    }));
   };
 
 
-  showState = () => {
+  showState = (state) => {
     // console.log(this.state);
-    return JSON.stringify(this.state)
+    return JSON.stringify(state)
   };
 
 
@@ -51,7 +57,8 @@ class QueryPage extends React.Component {
     <div>
       <p>{this.state.lookup}</p>
       <TableSelector selectHandle={this.addTableData} tableList={this.tableList}/>
-      <p>{this.showState()}</p>
+      <p>{this.showState(this.state)}</p>
+      <p>{this.showState(this.tables)}</p>
       <TableHolder lookup={this.state.lookup} tables={this.state.tables}/>
     </div>
   )

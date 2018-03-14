@@ -1,12 +1,13 @@
 import React from 'react'
+import ArrTable from "./type/ArrTable";
 
 class TableHolder extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     console.log("table holder props:");
     console.log(props);
 
-    this.state = props
+    this.state = this.props
   }
 
   // state = {
@@ -20,15 +21,19 @@ class TableHolder extends React.Component {
   //   }));
   // };
 
-  buildTableList(tableData) {
-    Object.keys(tableData).map(table => console.log(`key: table name = ${table}  data= ${tableData[table]}`));
-    // return this.state.cSelected.map((i) =>
-    //   <div key={i}>
-    //     {/* can pass nested tags apparently.. cool! */}
-    //     {i}: {this.tableList[i-1]} Table goes here...
-    //     <ArrTable/>
-    //   </div>
-    // )
+  buildTableList(tableObj) {
+    // obj loop
+    // Object.keys(tableObj).map(table => console.log(`key: table name = ${table}  data= ${tableObj[table]}`));
+
+    return Object.keys(tableObj).map((tableName) => {
+        let tableData = tableObj[tableName];
+        return <div key={tableName}>
+          {/* can pass nested tags apparently.. cool! */}
+          {tableName}:
+          {tableData && tableData.length ? <ArrTable data={tableData}/> : "No Data!"}
+        </div>
+      }
+    )
   }
 
   showState = () => {
@@ -42,6 +47,7 @@ class TableHolder extends React.Component {
         {/*{this.buildTableList()}*/}
         <p>{this.showState()}</p>
         {/*<p>{this.buildTableList(this.state.tables)}</p>*/}
+        {this.buildTableList(this.state.tables)}
       </div>
     );
   }
