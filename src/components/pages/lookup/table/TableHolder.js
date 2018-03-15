@@ -45,9 +45,9 @@ class TableHolder extends React.Component {
     return (
       <div>
         {/*{this.buildTableList()}*/}
-        <p>{this.showState()}</p>
         {/*<p>{this.buildTableList(this.state.tables)}</p>*/}
         {this.buildTableList(this.state.tables)}
+        {/*<p>{this.showState()}</p>*/}
       </div>
     );
   }

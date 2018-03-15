@@ -43,3 +43,12 @@ class API {
 }
 
 export default API;
+
+// /posts 	100 items
+// /comments 	500 items
+// /albums 	100 items
+// /photos 	5000 items
+// /todos 	200 items
+// /users 	10 items
+
+// http://jsonplaceholder.typicode.com/posts/1/comments

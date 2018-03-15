@@ -8,10 +8,10 @@ import {Toolbar, Data} from 'react-data-grid-addons'
 
 // import products from './data'
 // const products = [{}];
-import PersonAPI from '../../../../services/dataService'
-let api = new PersonAPI();
+// import PersonAPI from '../../../../services/dataService'
+// let api = new PersonAPI();
 // const products = [{}];
-const products = api.getAuthors();
+// const products = api.getAuthors();
 // const products = api.getWeather();
 // let products = api.getDataPromise();
 
@@ -51,6 +51,7 @@ class MyGcmTable extends React.Component {
 
     // console.log('products: ');
     // console.log(products);
+    const products = props.data;
 
     this.state = {rows: products, originalRows: products, filters: {}};
     this._columns = Object.keys(this.state.rows[0]).map((key, index) => (

@@ -9,7 +9,7 @@ const Query = () => (
     }}/>
     <Route exact path='/query' component={QP}/>
   </Switch>
-)
+);
 
 
 export default Query

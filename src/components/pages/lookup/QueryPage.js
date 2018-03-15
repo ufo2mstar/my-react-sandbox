@@ -1,7 +1,7 @@
 import React from 'react'
-import TableSelector from './options/TableSelector'
 import withRouter from "react-router-dom/es/withRouter";
 
+import TableSelector from './options/TableSelector'
 import TableHolder from "./table/TableHolder";
 
 class QueryPage extends React.Component {
@@ -14,17 +14,31 @@ class QueryPage extends React.Component {
     // console.log(this.props);
 
     // this.getTableData()
-    this.tableList = ['Arrs', 'Assets', 'Expos', 'Pledges','Steps'];
+    // this.tableList = ['Arrs', 'Assets', 'Expos', 'Pledges','Steps'];
+    this.tableList = [
+      'posts',
+      'comments',
+      'albums',
+      // 'photos',
+      'todos',
+      // 'users',
+    ];
     this.tables = this.toObj(this.tableList);
 
     this.state = {
-      lookup: this.props.match.params.id,
+      lookup: this.props.match.params.id ,
       tables: this.tables
     };
   }
 
+  componentWillReceiveProps = (nextProps) => {
+    this.setState({
+      lookup: nextProps.match.params.id
+    });
+  };
+
   toObj = (arr) => arr.reduce(function (acc, cur, i) {
-    acc[cur] = [i];
+    acc[cur] = [];
     return acc;
   }, {});
 
@@ -41,7 +55,7 @@ class QueryPage extends React.Component {
       // tables: prevState.tables[tableName] = tableQuery,
       // tables: this.tables[tableName] = tableQuery,
       // tables: prevState.tables[tableName], // table disappears
-      tables: prevState.tables, // table disappears
+      tables: prevState.tables, // table reassigns to old prototype
       // prevState.tables[tableName]= tableQuery,
     }));
   };
@@ -56,10 +70,10 @@ class QueryPage extends React.Component {
   render = () => (
     <div>
       <p>{this.state.lookup}</p>
-      <TableSelector selectHandle={this.addTableData} tableList={this.tableList}/>
-      <p>{this.showState(this.state)}</p>
-      <p>{this.showState(this.tables)}</p>
+      <TableSelector selectHandle={this.addTableData} tableList={this.tableList} lookup={this.state.lookup}/>
       <TableHolder lookup={this.state.lookup} tables={this.state.tables}/>
+      {/*<p>{this.showState(this.state)}</p>*/}
+      {/*<p>{this.showState(this.tables)}</p>*/}
     </div>
   )
 
