@@ -19,7 +19,7 @@ class QueryPage extends React.Component {
       'posts',
       'comments',
       'albums',
-      // 'photos',
+      'photos',
       'todos',
       // 'users',
     ];
@@ -48,8 +48,9 @@ class QueryPage extends React.Component {
   // };
 
   addTableData = (tableName, tableQuery) => {
-    console.log(this.state);
-    console.log(tableName, tableQuery);
+    // console.log(this.state);
+    // console.log(tableName, tableQuery);
+
     this.tables[tableName] = tableQuery;
     this.setState(prevState => ({
       // tables: prevState.tables[tableName] = tableQuery,

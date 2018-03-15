@@ -31,20 +31,18 @@ class API {
     let api_url = `${Consts.api_url}`;
     console.log(`api: ${api_url}`);
     return axios.get(api_url, {headers: {'Access-Control-Allow-Origin': '*',}})
-      // .then(resp => {
-      //   console.log(resp);
-      //   // this.props.onSubmit(resp.data[this.state.userName]);
-      //   return resp.data;
-      // })
+    // .then(resp => {
+    //   console.log(resp);
+    //   // this.props.onSubmit(resp.data[this.state.userName]);
+    //   return resp.data;
+    // })
       .catch(function (error) {
         console.log(error);
       });
   }
-}
 
-export default API;
-
-// /posts 	100 items
+  getApiData = (success_cb, uri, conditional) => {
+    // /posts 	100 items
 // /comments 	500 items
 // /albums 	100 items
 // /photos 	5000 items
@@ -52,3 +50,31 @@ export default API;
 // /users 	10 items
 
 // http://jsonplaceholder.typicode.com/posts/1/comments
+
+    if (conditional) {
+      // let api_url = `${Consts.api_url}.com/${tableName.toLowerCase()}/${this.props.lookup}`;
+      let api_url = `${Consts.api_url}.com/${uri.toLowerCase()}`;
+      console.log(`hitting: ${api_url}`);
+      // axios.get(api_url, {headers: {'Access-Control-Allow-Origin': '*',}})
+      axios.get(api_url)
+        .then(resp => {
+
+          // console.log('api call success!');
+          // console.log(resp);
+          success_cb(uri, resp.data)
+        })
+        .catch(function (error) {
+          // console.log('api call error :(');
+          // console.log(error);
+          success_cb(uri, [{Error: 'call'}])
+        });
+    }
+    else {
+      // null return
+      success_cb(uri, [])
+    }
+  };
+}
+
+export default new API();
+

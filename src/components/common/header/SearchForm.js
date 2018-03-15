@@ -104,13 +104,17 @@ class SearchForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    alert('A name was submitted: ' + this.state.value);
+    // alert('A name was submitted: ' + this.state.value);
     let target = `/query/${this.state.value}`;
     console.log(`going to: ${target}`);
     this.setState({searched: true, target: this.state.value,});
     this.props.history.push(target);
     // return;
   };
+
+  // componentDidMount(){
+  //   this.nameInput.focus();
+  // }
 
   render() {
     let inpClass = 'bg-dark text-light';
@@ -130,7 +134,9 @@ class SearchForm extends React.Component {
             <Label for="gcmSearch" hidden>ECI/ARR</Label>
             <InputGroup>
               <Input className={inpClass} id="gcmSearch" placeholder="ECI or ARR ID..."
-                     type="text" value={this.state.value} onChange={this.handleChange}/>
+                     type="text" value={this.state.value} onChange={this.handleChange}
+                     ref={(input) => { this.nameInput = input; }} autoFocus
+              />
               {/*<Input className={''} id="exampleEmail" placeholder="any..."/>*/}
               <InputGroupAddon addonType="append">
                 <Button color={btnClass}>

@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {Button, ButtonGroup, Row, Col} from 'reactstrap';
-import Consts from "../../../consts";
-import axios from "axios/index";
+
+import api from '../../../services/dataService'
+// const api = new API();
+// const api = new API();
 
 class TableSelector extends Component {
   constructor(props) {
@@ -29,7 +31,7 @@ class TableSelector extends Component {
 
 
     // this.tableList.map((tableName, index) => this.props.selectHandle(tableName, ['data', index]))
-    props.tableList.map((tableName, index) => this.getTableData(tableName, ['data', index]))
+    props.tableList.map((tableName, index) => this.sendTableData(tableName, ['data', index]))
   }
 
   toggle() {
@@ -53,37 +55,13 @@ class TableSelector extends Component {
     }
     this.setState({cSelected: [...this.state.cSelected]});
 
-    this.getTableData(this.state.checkBoxes[selected - 1], this.state.cSelected.includes(selected));
+    this.sendTableData(this.state.checkBoxes[selected - 1], this.state.cSelected.includes(selected));
   }
 
 
-  getTableData(tableName, isSelected) {
-    // /posts 	100 items
-// /comments 	500 items
-// /albums 	100 items
-// /photos 	5000 items
-// /todos 	200 items
-// /users 	10 items
-
-// http://jsonplaceholder.typicode.com/posts/1/comments
-
-    if (isSelected) {
-      // let api_url = `${Consts.api_url}.com/${tableName.toLowerCase()}/${this.props.lookup}`;
-      let api_url = `${Consts.api_url}.com/${tableName.toLowerCase()}`;
-      console.log(`hitting: ${api_url}`);
-      axios.get(api_url, {headers: {'Access-Control-Allow-Origin': '*',}})
-      // axios.get(api_url)
-        .then(resp => {
-          console.log(resp);
-          this.props.selectHandle(tableName, resp.data)
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-    else {
-      this.props.selectHandle(tableName, [])
-    }
+  sendTableData(tableName, isSelected) {
+    let cb = this.props.selectHandle;
+    api.getApiData(cb, tableName, isSelected)
   }
 
   makeNewButton() {
@@ -93,7 +71,7 @@ class TableSelector extends Component {
   buildButtonList() {
     return this.state.checkBoxes.map((name, i) => {
         // this.props.selectHandle(name, ['data', i]);
-        return <Button key={name+i} color="primary" onClick={() => this.onCheckboxBtnClick(i + 1)}
+        return <Button key={name + i} color="primary" onClick={() => this.onCheckboxBtnClick(i + 1)}
                        active={this.state.cSelected.includes(i + 1)}>{name}</Button>
       }
     )
@@ -113,7 +91,7 @@ class TableSelector extends Component {
             <ButtonGroup>
               {this.buildButtonList()}
             </ButtonGroup>
-            <p>Selected: {JSON.stringify(this.state.cSelected)}</p>
+            {/*<p>Selected: {JSON.stringify(this.state.cSelected)}</p>*/}
           </Col>
         </Row>
         {/*<p>{this.showState()}</p>*/}
